@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add a loading row by default
   const loadingRow = document.createElement("tr");
-  loadingRow.innerHTML = `<td colspan="2">Loading...</td>`;
+  loadingRow.innerHTML = `<td id="loading" colspan="2">Loading...</td>`;
   outputTable.appendChild(loadingRow);
 
   // Function to create a promise that resolves after a random time between 1 and 3 seconds
