@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Reference to the output tbody
   const outputTable = document.getElementById("output");
 
-  // Add a loading row by default
+  // Create a loading row with an id of 'loading'
   const loadingRow = document.createElement("tr");
-	loadingRow.id = "loading";
+  loadingRow.id = "loading"; // Add the id attribute here
   loadingRow.innerHTML = `<td colspan="2">Loading...</td>`;
   outputTable.appendChild(loadingRow);
 
@@ -33,13 +33,33 @@ document.addEventListener("DOMContentLoaded", () => {
     // Populate the table with the results of each promise
     results.forEach((result) => {
       const row = document.createElement("tr");
-      row.innerHTML = `<td>Promise ${result.promiseNumber}</td><td>${result.timeTaken} s</td>`;
+      
+      const td1 = document.createElement("td");
+      td1.textContent = `Promise ${result.promiseNumber}`;
+      td1.id = `promise${result.promiseNumber}`; // Set the id for td1
+
+      const td2 = document.createElement("td");
+      td2.textContent = `${result.timeTaken} s`;
+      td2.id = `time${result.promiseNumber}`; // Set the id for td2
+
+      row.appendChild(td1);
+      row.appendChild(td2);
       outputTable.appendChild(row);
     });
 
     // Add the total time row
     const totalRow = document.createElement("tr");
-    totalRow.innerHTML = `<td>Total</td><td>${totalTime} s</td>`;
+    
+    const tdTotal1 = document.createElement("td");
+    tdTotal1.textContent = "Total";
+    tdTotal1.id = "totalLabel"; // Set the id for total label td
+
+    const tdTotal2 = document.createElement("td");
+    tdTotal2.textContent = `${totalTime} s`;
+    tdTotal2.id = "totalTime"; // Set the id for total time td
+
+    totalRow.appendChild(tdTotal1);
+    totalRow.appendChild(tdTotal2);
     outputTable.appendChild(totalRow);
   });
 });
